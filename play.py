@@ -15,13 +15,12 @@ def game():
     attempts = 1
     code = random_code()
     is_won = False
-    while attempts <= 10:
+    while attempts <= 10 and not is_won:
         pattern = input_prompt_entry(attempts)
         if is_valid_pattern(pattern):
             result = try_pattern(pattern, code)
             print_msg_eval_entry(result[0], result[1])
             if result[0] == 4:
-                print_msg_game_won(attempts)
                 is_won = True
             else:
                 attempts += 1
