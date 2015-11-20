@@ -5,13 +5,16 @@ from core import *
 def play():
     play_again = True
     while play_again:
+        print_msg_start()   # Should be in game() but we have the 15 lines limitation
         game()
-        if input_continue_playing().lower() != 'c':
-            play_again = False
+        entry = ''
+        while entry != 'c' and entry != 'q':
+            entry = input_continue_playing().lower()
+            if entry == 'q':
+                play_again = False
 
 
 def game():
-    print_msg_start()
     attempts = 1
     code = random_code()
     is_won = False
@@ -26,10 +29,8 @@ def game():
                 attempts += 1
         else:
             print_msg_wrong_entry()
-    if is_won:
-        print_msg_game_won(attempts)
-    else:
-        print_msg_game_lost(code)
+    print_msg_game_won(attempts) if is_won else print_msg_game_lost(code)
+
 
 if __name__ == "__main__":  # If it's not a module, if it's called (main)
     play()  # Launch the game
