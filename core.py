@@ -1,5 +1,10 @@
+from random import sample, seed
+
+
 def random_code():
-    pass
+    seed()
+    return sample(['r', 'j', 'v', 'b', 'o', 'c', 't', 'f'], 4)
+
 
 
 def is_valid_pattern(pattern):  # Ugly code but we have to put only one return -_-
