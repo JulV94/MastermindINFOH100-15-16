@@ -20,14 +20,14 @@ def is_valid_pattern(pattern):  # Ugly code but we have to put only one return
 def try_pattern(pattern, code):
     well_placed = 0
     good_color = 0
-    for i in range(len(pattern)-1, -1, -1):
-        if pattern[i] == code[i]:
+    for i in range(len(code)):
+        # Do it the other way around in order to guarantee unicity
+        if code[i] == pattern[i]:
             well_placed += 1
-            pattern.pop(i)
-            code.pop(i)
-
-    for elem in pattern:
-        if elem in code:
+        elif code[i] in pattern:
+            # if code[i] is twice in pattern, this still returns 1
+            # This doesn't run if code[i] is well_placed => no overcount issues
             good_color += 1
-
-    return tuple(well_placed, good_color)
+        # This works and is beautiful!
+        # pop is a bad idea altogether because it modifies code
+    return (well_placed, good_color)
