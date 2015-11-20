@@ -1,17 +1,18 @@
 from random import sample
 
+VALID_COLORS = ['r', 'j', 'v', 'b', 'o', 'c', 't', 'f']
+
 
 def random_code():
-    return sample(['r', 'j', 'v', 'b', 'o', 'c', 't', 'f'], 4)
+    return sample(VALID_COLORS, 4)
 
 
 def is_valid_pattern(pattern):  # Ugly code but we have to put only one return -_-
     result = True
-    valid_colors = ['r', 'j', 'v', 'b', 'o', 'c', 't', 'f']
     if len(pattern) != 4:
         result = False
     for elem in pattern:
-        if elem not in valid_colors:
+        if elem not in VALID_COLORS:
             result = False
     return result
 
