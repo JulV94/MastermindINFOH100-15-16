@@ -1,8 +1,7 @@
-from random import sample, seed
+from random import sample
 
 
 def random_code():
-    seed()
     return sample(['r', 'j', 'v', 'b', 'o', 'c', 't', 'f'], 4)
 
 
