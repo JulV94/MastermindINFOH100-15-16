@@ -7,7 +7,7 @@ def random_code():
     return sample(VALID_COLORS, 4)
 
 
-def is_valid_pattern(pattern):  # Ugly code but we have to put only one return -_-
+def is_valid_pattern(pattern):  # Ugly code but we have to put only one return
     result = True
     if len(pattern) != 4:
         result = False
