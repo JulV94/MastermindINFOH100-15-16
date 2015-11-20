@@ -16,7 +16,7 @@ def game():
     code = random_code()
     is_won = False
     while attempts <= 10 and not is_won:
-        pattern = input_prompt_entry(attempts)
+        pattern = list(input_prompt_entry(attempts).lower())
         if is_valid_pattern(pattern):
             result = try_pattern(pattern, code)
             print_msg_eval_entry(result[0], result[1])
