@@ -3,6 +3,14 @@ from core import *
 
 
 def play():
+    play_again = True
+    while play_again:
+        game()
+        if input_continue_playing().lower() != 'c':
+            play_again = False
+
+
+def game():
     print_msg_start()
     attempts = 1
     code = random_code()
@@ -23,7 +31,6 @@ def play():
         print_msg_game_won(attempts)
     else:
         print_msg_game_lost(code)
-
 
 if __name__ == "__main__":  # If it's not a module, if it's called (main)
     play()  # Launch the game
