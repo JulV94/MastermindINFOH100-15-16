@@ -5,7 +5,6 @@ def random_code():
     return sample(['r', 'j', 'v', 'b', 'o', 'c', 't', 'f'], 4)
 
 
-
 def is_valid_pattern(pattern):  # Ugly code but we have to put only one return -_-
     result = True
     valid_colors = ['r', 'j', 'v', 'b', 'o', 'c', 't', 'f']
