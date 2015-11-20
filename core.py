@@ -30,4 +30,4 @@ def try_pattern(pattern, code):
             good_color += 1
         # This works and is beautiful!
         # pop is a bad idea altogether because it modifies code
-    return (well_placed, good_color)
+    return well_placed, good_color
