@@ -1,6 +1,8 @@
 from interface import *
 from core import *
 
+MAX_ATTEMPTS = 10
+
 
 def play():
     play_again = True
