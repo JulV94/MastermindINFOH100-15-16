@@ -1,0 +1,1 @@
+Find an elegant way to quit the game at any point by entering Q.
