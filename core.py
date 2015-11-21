@@ -2,10 +2,20 @@ from random import sample
 
 VALID_COLORS = ['r', 'j', 'v', 'b', 'o', 'c', 't', 'f']
 PATTERN_LENGTH = 4
+SEPARATORS = ' ,;'
 
 
 def random_code():
     return sample(VALID_COLORS, 4)
+
+
+def sanitize(string):
+    string = string.lower().strip()
+    result = []
+    for char in string:
+        if char not in SEPARATORS:
+            result.append(char)
+    return result
 
 
 def is_valid_pattern(pattern):

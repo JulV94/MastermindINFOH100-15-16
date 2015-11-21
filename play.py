@@ -8,10 +8,9 @@ def play():
         print_msg_start()   # Should be in game() but we have the 15 lines limitation
         game()
         entry = ''
-        while entry != 'c' and entry != 'q':
-            entry = input_continue_playing().lower()
-            if entry == 'q':
-                play_again = False
+        while entry not in 'cq':
+            entry = input_continue_playing().lower().strip()
+        play_again = entry == c
 
 
 def game():
