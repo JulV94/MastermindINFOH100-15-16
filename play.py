@@ -7,7 +7,6 @@ MAX_ATTEMPTS = 10
 def play():
     play_again = True
     while play_again:
-        print_msg_start()   # Should be in game() but we have the 15 lines limitation
         game()
         entry = ''
         while entry not in 'cq':
@@ -15,22 +14,37 @@ def play():
         play_again = entry == c
 
 
-def game():
+def round(code, attempts):
+    pattern = sanitize(input_prompt_entry(attempts))
+    while not is_valid_pattern(pattern):
+        print_msg_wrong_entry()
+        pattern = list(input_prompt_entry(attempts).lower())
+    (well_placed, good_color) = try_pattern(pattern, code)
+    print_msg_eval_entry(well_placed, good_color)
+    return well_placed == 4
+
+
+def init_game():
     attempts = 1
     code = random_code()
     is_won = False
-    while attempts <= 10 and not is_won:
-        pattern = list(input_prompt_entry(attempts).lower())
-        if is_valid_pattern(pattern):
-            result = try_pattern(pattern, code)
-            print_msg_eval_entry(result[0], result[1])
-            if result[0] == 4:
-                is_won = True
-            else:
-                attempts += 1
-        else:
-            print_msg_wrong_entry()
-    print_msg_game_won(attempts) if is_won else print_msg_game_lost(code)
+    print_msg_start()
+    return attempts, code, is_won
+
+
+def end_game(is_won, attempts, code):
+    if is_won:
+        print_msg_game_won(attempts)
+    else:
+        print_msg_game_lost(code)
+
+
+def game():
+    attempts, code, is_won = init_game()
+    while attempts <= MAX_ATTEMPTS and not is_won:
+        is_won = round(code, attempts)
+        attempts += 1
+    end_game(is_won, attempts, code)
 
 
 if __name__ == "__main__":  # If it's not a module, if it's called (main)
